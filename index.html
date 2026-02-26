@@ -1,1 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer | Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --grey: #8a9ab0;
+    --light-bg: #f8f7f4;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light-bg);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(8px);
+    padding: 18px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.4rem; font-weight: 700; letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: 30%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { max-width: 700px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 16px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--white);
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 1.1rem; color: var(--grey);
+    line-height: 1.8; max-width: 520px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-btns { display: flex; gap: 16px; animation: fadeUp 0.6s 0.45s ease both; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 32px; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 1px;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--grey); color: var(--cream);
+    padding: 14px 32px; font-weight: 500;
+    font-size: 0.9rem; letter-spacing: 1px;
+    text-decoration: none; text-transform: uppercase;
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    margin-top: 70px; display: flex; gap: 48px;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; color: var(--gold); font-weight: 700;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  /* ABOUT */
+  .section { padding: 100px 60px; }
+  .section-tag {
+    font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--navy);
+    margin-bottom: 20px; line-height: 1.2;
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual {
+    background: var(--navy);
+    padding: 50px 40px;
+    position: relative;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--gold); z-index: -1;
+  }
+  .about-visual-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--white); font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .about-visual-role { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; }
+  .about-visual-line { width: 40px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+  .about-visual p { color: var(--grey); line-height: 1.8; font-size: 0.95rem; }
+  .about-right p { color: #4a5568; line-height: 1.9; font-size: 1rem; margin-bottom: 20px; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .skill-tag {
+    background: var(--navy); color: var(--cream);
+    padding: 7px 16px; font-size: 0.8rem;
+    font-weight: 500; letter-spacing: 0.5px;
+  }
+
+  /* SERVICES */
+  .services { background: var(--navy); }
+  .services .section-title { color: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 50px; }
+  .service-card {
+    background: var(--navy-mid); padding: 40px 32px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .service-icon { font-size: 2rem; margin-bottom: 20px; }
+  .service-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 12px; }
+  .service-desc { color: var(--grey); line-height: 1.8; font-size: 0.9rem; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 50px; }
+  .project-card {
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13,27,42,0.08);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .project-card:hover { box-shadow: 0 12px 40px rgba(13,27,42,0.14); transform: translateY(-4px); }
+  .project-banner {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; color: var(--white); font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .banner-1 { background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 100%); }
+  .banner-2 { background: linear-gradient(135deg, #2c3e50 0%, #1a2e45 100%); }
+  .project-body { padding: 32px; }
+  .project-tag { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .project-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; }
+  .project-desc { color: #4a5568; line-height: 1.8; font-size: 0.92rem; margin-bottom: 20px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .p-tag { background: var(--light-bg); color: var(--navy); padding: 5px 12px; font-size: 0.78rem; font-weight: 500; }
+
+  /* REVIEWS */
+  .reviews { background: var(--light-bg); }
+  .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 50px; max-width: 800px; }
+  .review-card {
+    background: var(--white);
+    padding: 36px 40px;
+    box-shadow: 0 4px 24px rgba(13,27,42,0.07);
+    border-left: 4px solid var(--gold);
+    position: relative;
+  }
+  .review-quote {
+    font-size: 3rem; color: var(--gold); line-height: 1;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 12px; opacity: 0.6;
+  }
+  .review-text {
+    color: #4a5568; line-height: 1.9; font-size: 1rem;
+    font-style: italic; margin-bottom: 24px;
+  }
+  .review-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .review-author { display: flex; align-items: center; gap: 14px; }
+  .review-avatar {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); font-size: 1.1rem; font-weight: 700;
+  }
+  .review-name { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+  .review-company { font-size: 0.8rem; color: var(--grey); margin-top: 2px; letter-spacing: 0.5px; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact .section-title { color: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 50px; }
+  .contact-info p { color: var(--grey); line-height: 1.9; margin-bottom: 36px; font-size: 1rem; }
+  .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .contact-detail-icon { font-size: 1.2rem; }
+  .contact-detail-text { color: var(--cream); font-size: 0.95rem; }
+  form { display: flex; flex-direction: column; gap: 16px; }
+  input, textarea {
+    background: var(--navy-mid); border: 1px solid #2a3f56;
+    color: var(--white); padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus { border-color: var(--gold); }
+  input::placeholder, textarea::placeholder { color: var(--grey); }
+  textarea { resize: vertical; min-height: 130px; }
+  button[type="submit"] {
+    background: var(--gold); color: var(--navy);
+    padding: 15px 32px; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 1px;
+    text-transform: uppercase; border: none;
+    cursor: pointer; transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    align-self: flex-start;
+  }
+  button[type="submit"]:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: #080f18; color: var(--grey);
+    text-align: center; padding: 28px 60px;
+    font-size: 0.85rem;
+  }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero, .section { padding: 100px 24px 60px; }
+    .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Jennifer.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Digital Marketing Specialist</div>
+    <h1>Hi, I'm <span>Jennifer</span>.<br>I grow brands online.</h1>
+    <p>Currently pursuing my digital marketing certification and already delivering real results for real clients. I help businesses build their online presence from scratch — strategically, creatively, and effectively.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Let's Connect</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2.5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Platforms Managed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-visual-name">Jennifer</div>
+      <div class="about-visual-role">Digital Marketing & Sales Professional</div>
+      <div class="about-visual-line"></div>
+      <p>2.5+ years of combined experience in marketing and sales. Passionate about helping businesses thrive in the digital world. Every brand has a story — I help tell it to the right audience.</p>
+    </div>
+    <div class="about-right">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Turning Digital Presence Into Real Results</h2>
+      <p>I'm a digital marketing professional with 2.5 years of hands-on experience across both marketing and sales. Currently deepening my expertise through a professional digital marketing certification, I combine real-world business insight with the latest digital strategies to deliver results that matter.</p>
+      <p>From building social media profiles from scratch to managing multi-platform campaigns and driving sales through targeted outreach, I approach every project with dedication and attention to detail.</p>
+      <div class="skills-list">
+        <span class="skill-tag">Social Media Marketing</span>
+        <span class="skill-tag">Instagram & Facebook</span>
+        <span class="skill-tag">YouTube Optimization</span>
+        <span class="skill-tag">Business Manager Setup</span>
+        <span class="skill-tag">Twitter / X</span>
+        <span class="skill-tag">Quora Marketing</span>
+        <span class="skill-tag">Web Design (Templates)</span>
+        <span class="skill-tag">Content Strategy</span>
+        <span class="skill-tag">SEO</span>
+        <span class="skill-tag">Lead Generation</span>
+        <span class="skill-tag">Paid Ads</span>
+        <span class="skill-tag">Email Campaigns</span>
+        <span class="skill-tag">Sales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-tag">What I Offer</div>
+  <h2 class="section-title">Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <div class="service-title">Social Media Setup & Management</div>
+      <p class="service-desc">Complete setup of your business profiles on Instagram, Facebook, Twitter/X, and more — including branding, bio optimization, and content strategy.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-title">Facebook Business Manager</div>
+      <p class="service-desc">End-to-end setup of Facebook Business Manager — pages, ad accounts, pixels, and permissions — so you're ready to run ads and scale.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <div class="service-title">YouTube & Multi-Platform Optimization</div>
+      <p class="service-desc">Channel setup, keyword-rich descriptions, thumbnail strategy, and cross-platform presence optimization including Quora and YouTube.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-title">Website Creation</div>
+      <p class="service-desc">Building clean, professional websites using templates that represent your brand and convert visitors into customers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <div class="service-title">Content Strategy</div>
+      <p class="service-desc">Planning and structuring content that speaks to your target audience and keeps them engaged across all platforms.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <div class="service-title">Brand Presence Building</div>
+      <p class="service-desc">Helping new and growing businesses establish a consistent, credible digital identity from the ground up.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">SEO Optimization</div>
+      <p class="service-desc">Improving your website's visibility on search engines through keyword research, on-page optimization, and strategic content structuring to drive organic traffic.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <div class="service-title">Lead Generation</div>
+      <p class="service-desc">Attracting and converting high-quality leads for your business through targeted campaigns, landing pages, and proven digital outreach strategies.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <div class="service-title">Paid Ads Management</div>
+      <p class="service-desc">Setting up and managing paid advertising campaigns on Facebook, Instagram, and Google — optimized to maximise reach, clicks, and ROI within your budget.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📧</div>
+      <div class="service-title">Email Campaigns</div>
+      <p class="service-desc">Crafting and executing targeted email marketing campaigns that nurture leads, retain customers, and drive conversions with compelling copy and smart segmentation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-tag">My Work</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-banner banner-1">Intel Safari Travel ✈️</div>
+      <div class="project-body">
+        <div class="project-tag">Freelance Project · Social Media & Digital Setup</div>
+        <div class="project-title">Intel Safari Travel — Full Digital Presence</div>
+        <p class="project-desc">Built the complete online presence for a travel brand from scratch. Created and optimized their Instagram and Facebook business profiles, set up Facebook Business Manager end-to-end, and established their presence across YouTube, Twitter/X, and Quora to maximize visibility and audience reach.</p>
+        <div class="project-tags">
+          <span class="p-tag">Instagram</span>
+          <span class="p-tag">Facebook Business Manager</span>
+          <span class="p-tag">YouTube</span>
+          <span class="p-tag">Twitter / X</span>
+          <span class="p-tag">Quora</span>
+          <span class="p-tag">Brand Setup</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-banner banner-2">🌐 Website Build</div>
+      <div class="project-body">
+        <div class="project-tag">Course Project · Web Design</div>
+        <div class="project-title">Website Design — Course Assignment</div>
+        <p class="project-desc">Designed and built a complete website using a professional template as part of my digital marketing coursework. This project strengthened my understanding of web structure, UX principles, branding consistency, and how a website fits into an overall digital marketing strategy.</p>
+        <div class="project-tags">
+          <span class="p-tag">Web Design</span>
+          <span class="p-tag">Template Customization</span>
+          <span class="p-tag">UX Basics</span>
+          <span class="p-tag">Branding</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+  <div class="section-tag">Client Testimonials</div>
+  <h2 class="section-title">What Clients Say</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">I was facing issues connecting my Instagram and Facebook accounts and was completely stuck. The social media optimization service helped resolve the connection problem smoothly and ensured everything was properly integrated and functioning. Highly recommend for anyone facing similar setup issues.</p>
+      <div class="review-author">
+        <div class="review-avatar">IS</div>
+        <div>
+          <div class="review-name">Intel Safari Travel</div>
+          <div class="review-company">US Client · Travel Industry</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>I'm currently available for freelance projects and open to new opportunities. Whether you need to build your social media presence, set up your business manager, or grow your digital brand — I'd love to help.</p>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📧</span>
+        <span class="contact-detail-text">jennijennifer382003@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📍</span>
+        <span class="contact-detail-text">Available for Remote Projects Worldwide</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">💼</span>
+        <span class="contact-detail-text">Open to Freelance & Internships</span>
+      </div>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Tell me about your project..."></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Jennifer</span> · Digital Marketing Specialist · Built with passion 🌟</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("Thanks for reaching out! I'll get back to you soon. 😊");
+    e.target.reset();
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .project-card, .about-visual, .
